@@ -8,26 +8,38 @@ import "github.com/antlr/antlr4/runtime/Go/antlr"
 type CalcListener interface {
 	antlr.ParseTreeListener
 
-	// EnterNUMBER is called when entering the NUMBER production.
-	EnterNUMBER(c *NUMBERContext)
+	// EnterID is called when entering the ID production.
+	EnterID(c *IDContext)
 
-	// EnterAddSub is called when entering the AddSub production.
-	EnterAddSub(c *AddSubContext)
+	// EnterOUT is called when entering the OUT production.
+	EnterOUT(c *OUTContext)
 
-	// EnterCHENGCHU is called when entering the CHENGCHU production.
-	EnterCHENGCHU(c *CHENGCHUContext)
+	// EnterSetVal is called when entering the setVal production.
+	EnterSetVal(c *SetValContext)
+
+	// EnterJia is called when entering the jia production.
+	EnterJia(c *JiaContext)
+
+	// EnterRow is called when entering the row production.
+	EnterRow(c *RowContext)
 
 	// EnterStart is called when entering the start production.
 	EnterStart(c *StartContext)
 
-	// ExitNUMBER is called when exiting the NUMBER production.
-	ExitNUMBER(c *NUMBERContext)
+	// ExitID is called when exiting the ID production.
+	ExitID(c *IDContext)
 
-	// ExitAddSub is called when exiting the AddSub production.
-	ExitAddSub(c *AddSubContext)
+	// ExitOUT is called when exiting the OUT production.
+	ExitOUT(c *OUTContext)
 
-	// ExitCHENGCHU is called when exiting the CHENGCHU production.
-	ExitCHENGCHU(c *CHENGCHUContext)
+	// ExitSetVal is called when exiting the setVal production.
+	ExitSetVal(c *SetValContext)
+
+	// ExitJia is called when exiting the jia production.
+	ExitJia(c *JiaContext)
+
+	// ExitRow is called when exiting the row production.
+	ExitRow(c *RowContext)
 
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)

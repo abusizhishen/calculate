@@ -21,23 +21,35 @@ func (s *BaseCalcListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseCalcListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterNUMBER is called when production NUMBER is entered.
-func (s *BaseCalcListener) EnterNUMBER(ctx *NUMBERContext) {}
+// EnterID is called when production ID is entered.
+func (s *BaseCalcListener) EnterID(ctx *IDContext) {}
 
-// ExitNUMBER is called when production NUMBER is exited.
-func (s *BaseCalcListener) ExitNUMBER(ctx *NUMBERContext) {}
+// ExitID is called when production ID is exited.
+func (s *BaseCalcListener) ExitID(ctx *IDContext) {}
 
-// EnterAddSub is called when production AddSub is entered.
-func (s *BaseCalcListener) EnterAddSub(ctx *AddSubContext) {}
+// EnterOUT is called when production OUT is entered.
+func (s *BaseCalcListener) EnterOUT(ctx *OUTContext) {}
 
-// ExitAddSub is called when production AddSub is exited.
-func (s *BaseCalcListener) ExitAddSub(ctx *AddSubContext) {}
+// ExitOUT is called when production OUT is exited.
+func (s *BaseCalcListener) ExitOUT(ctx *OUTContext) {}
 
-// EnterCHENGCHU is called when production CHENGCHU is entered.
-func (s *BaseCalcListener) EnterCHENGCHU(ctx *CHENGCHUContext) {}
+// EnterSetVal is called when production setVal is entered.
+func (s *BaseCalcListener) EnterSetVal(ctx *SetValContext) {}
 
-// ExitCHENGCHU is called when production CHENGCHU is exited.
-func (s *BaseCalcListener) ExitCHENGCHU(ctx *CHENGCHUContext) {}
+// ExitSetVal is called when production setVal is exited.
+func (s *BaseCalcListener) ExitSetVal(ctx *SetValContext) {}
+
+// EnterJia is called when production jia is entered.
+func (s *BaseCalcListener) EnterJia(ctx *JiaContext) {}
+
+// ExitJia is called when production jia is exited.
+func (s *BaseCalcListener) ExitJia(ctx *JiaContext) {}
+
+// EnterRow is called when production row is entered.
+func (s *BaseCalcListener) EnterRow(ctx *RowContext) {}
+
+// ExitRow is called when production row is exited.
+func (s *BaseCalcListener) ExitRow(ctx *RowContext) {}
 
 // EnterStart is called when production start is entered.
 func (s *BaseCalcListener) EnterStart(ctx *StartContext) {}

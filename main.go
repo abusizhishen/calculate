@@ -14,13 +14,23 @@ func main() {
 	tokens := antlr.NewCommonTokenStream(lex, antlr.TokenDefaultChannel)
 	p := parser.NewCalcParser(tokens)
 
-	antlr.ParseTreeWalkerDefault.Walk(&calcListener{}, p.Start())
+	antlr.ParseTreeWalkerDefault.Walk(newCalcListener(), p.Start())
 }
 
 type calcListener struct {
 	*parser.BaseCalcListener
+	m map[string]int
 
 	stack []int
+	idStack []string
+}
+
+func newCalcListener() *calcListener {
+	return &calcListener{
+		BaseCalcListener: new(parser.BaseCalcListener),
+		m:                make(map[string]int),
+		stack:            nil,
+	}
 }
 
 func (l *calcListener) push(i int) {
@@ -41,42 +51,68 @@ func (l *calcListener) pop() int {
 	return result
 }
 
-func (l *calcListener) ExitNUMBER(c *parser.NUMBERContext) {
-	i,err := strconv.Atoi(c.GetText())
-	if err != nil{
-		panic(fmt.Sprintf("invalid number %s", c.GetText()))
-	}
-	
-	l.push(i)
-}
 
+//func (l *calcListener) ExitADDSUB(c *parser.ADDSUBContext) {
+//	right,left := l.pop(),l.pop()
+//
+//	switch c.GetOp().GetTokenType() {
+//	case parser.CalcLexerAdd:
+//		l.push(left+right)
+//	case parser.CalcLexerSub:
+//		l.push(left-right)
+//	default:
+//		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
+//	}
+//}
 
-func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
-	right,left := l.pop(),l.pop()
-
-	switch c.GetOp().GetTokenType() {
-	case parser.CalcLexerAdd:
-		l.push(left+right)
-	case parser.CalcLexerSub:
-		l.push(left-right)
-	default:
-		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
-	}
-}
-
-func (l *calcListener) ExitCHENGCHU(c *parser.CHENGCHUContext) {
-	right,left := l.pop(),l.pop()
-
-	switch c.GetOp().GetTokenType() {
-	case parser.CalcLexerCHENG:
-		l.push(left*right)
-	case parser.CalcLexerCHU:
-		l.push(left/right)
-	default:
-		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
-	}
-}
+//func (l *calcListener) ExitCHENGCHU(c *parser.CHENGCHUContext) {
+//	right,left := l.pop(),l.pop()
+//
+//	switch c.GetOp().GetTokenType() {
+//	case parser.CalcLexerCHENG:
+//		l.push(left*right)
+//	case parser.CalcLexerCHU:
+//		l.push(left/right)
+//	default:
+//		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
+//	}
+//}
 
 func (l *calcListener) ExitStart(c *parser.StartContext) {
-	log.Printf("result:%d", l.pop())
+	//log.Printf("result:%d", l.pop())
 }
+
+func (l *calcListener) ExitSingleValue(c *parser.SingleValueContext) {
+
+}
+
+func (l *calcListener) EnterSetVal(c *parser.SetValContext) {
+	l.m[c.GetId().GetText()] = strToNum(c.GetValue().GetText())
+}
+
+func (l *calcListener) ExitSetVal(c *parser.SetValContext) {
+	key := c.GetId().GetText()
+	log.Printf("%s = %d", key, l.m[key])
+}
+
+func strToNum(s string) int {
+	i,err := strconv.Atoi(s)
+	if err != nil{
+		panic(fmt.Sprintf("invalid number:%s", s))
+	}
+
+	return i
+}
+
+func (l *calcListener) ExitID(c *parser.IDContext) {
+	key := c.GetText()
+	log.Println(key)
+	log.Printf("out: %d", l.m[key])
+}
+
+func (l *calcListener) ExitOUT(c *parser.OUTContext) {
+	key := c.GetText()
+	log.Println(key)
+	log.Printf("out: %s", key)
+}
+
