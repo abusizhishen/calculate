@@ -8,27 +8,27 @@ import "github.com/antlr/antlr4/runtime/Go/antlr"
 type CalcListener interface {
 	antlr.ParseTreeListener
 
-	// EnterExpr is called when entering the expr production.
-	EnterExpr(c *ExprContext)
+	// EnterNUMBER is called when entering the NUMBER production.
+	EnterNUMBER(c *NUMBERContext)
 
-	// EnterRow is called when entering the row production.
-	EnterRow(c *RowContext)
+	// EnterAddSub is called when entering the AddSub production.
+	EnterAddSub(c *AddSubContext)
 
-	// EnterLast is called when entering the last production.
-	EnterLast(c *LastContext)
+	// EnterCHENGCHU is called when entering the CHENGCHU production.
+	EnterCHENGCHU(c *CHENGCHUContext)
 
-	// EnterFile is called when entering the file production.
-	EnterFile(c *FileContext)
+	// EnterStart is called when entering the start production.
+	EnterStart(c *StartContext)
 
-	// ExitExpr is called when exiting the expr production.
-	ExitExpr(c *ExprContext)
+	// ExitNUMBER is called when exiting the NUMBER production.
+	ExitNUMBER(c *NUMBERContext)
 
-	// ExitRow is called when exiting the row production.
-	ExitRow(c *RowContext)
+	// ExitAddSub is called when exiting the AddSub production.
+	ExitAddSub(c *AddSubContext)
 
-	// ExitLast is called when exiting the last production.
-	ExitLast(c *LastContext)
+	// ExitCHENGCHU is called when exiting the CHENGCHU production.
+	ExitCHENGCHU(c *CHENGCHUContext)
 
-	// ExitFile is called when exiting the file production.
-	ExitFile(c *FileContext)
+	// ExitStart is called when exiting the start production.
+	ExitStart(c *StartContext)
 }

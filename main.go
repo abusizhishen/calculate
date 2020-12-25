@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/abusizhishen/calculate/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"log"
+	"strconv"
 )
 
 func main() {
@@ -12,7 +14,7 @@ func main() {
 	tokens := antlr.NewCommonTokenStream(lex, antlr.TokenDefaultChannel)
 	p := parser.NewCalcParser(tokens)
 
-	antlr.ParseTreeWalkerDefault.Walk(&calcListener{}, p.File())
+	antlr.ParseTreeWalkerDefault.Walk(&calcListener{}, p.Start())
 }
 
 type calcListener struct {
@@ -39,30 +41,42 @@ func (l *calcListener) pop() int {
 	return result
 }
 
-func (l *calcListener) ExitRow(c *parser.RowContext) {
-}
-
-func (l *calcListener) ExitFile(c *parser.FileContext) {
-}
-
-func (l *calcListener) ExitLast(c *parser.LastContext) {
-}
-
-func (l *calcListener) ExitExpr(c *parser.ExprContext) {
-}
-
-func (l *calcListener) EnterRow(c *parser.RowContext) {
-}
-
-func (l *calcListener) EnterFile(c *parser.FileContext) {
-	for _,file := range c.GetChildren(){
-		log.Println(file.GetPayload())
+func (l *calcListener) ExitNUMBER(c *parser.NUMBERContext) {
+	i,err := strconv.Atoi(c.GetText())
+	if err != nil{
+		panic(fmt.Sprintf("invalid number %s", c.GetText()))
 	}
-
-
+	
+	l.push(i)
 }
 
 
-func (l *calcListener) EnterExpr(c *parser.ExprContext) {
-	log.Println(c.GetText())
+func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
+	right,left := l.pop(),l.pop()
+
+	switch c.GetOp().GetTokenType() {
+	case parser.CalcLexerAdd:
+		l.push(left+right)
+	case parser.CalcLexerSub:
+		l.push(left-right)
+	default:
+		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
+	}
+}
+
+func (l *calcListener) ExitCHENGCHU(c *parser.CHENGCHUContext) {
+	right,left := l.pop(),l.pop()
+
+	switch c.GetOp().GetTokenType() {
+	case parser.CalcLexerCHENG:
+		l.push(left*right)
+	case parser.CalcLexerCHU:
+		l.push(left/right)
+	default:
+		panic(fmt.Sprintf("unexpected op %s", c.GetOp().GetText()))
+	}
+}
+
+func (l *calcListener) ExitStart(c *parser.StartContext) {
+	log.Printf("result:%d", l.pop())
 }

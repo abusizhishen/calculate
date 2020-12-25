@@ -21,26 +21,26 @@ func (s *BaseCalcListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseCalcListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterExpr is called when production expr is entered.
-func (s *BaseCalcListener) EnterExpr(ctx *ExprContext) {}
+// EnterNUMBER is called when production NUMBER is entered.
+func (s *BaseCalcListener) EnterNUMBER(ctx *NUMBERContext) {}
 
-// ExitExpr is called when production expr is exited.
-func (s *BaseCalcListener) ExitExpr(ctx *ExprContext) {}
+// ExitNUMBER is called when production NUMBER is exited.
+func (s *BaseCalcListener) ExitNUMBER(ctx *NUMBERContext) {}
 
-// EnterRow is called when production row is entered.
-func (s *BaseCalcListener) EnterRow(ctx *RowContext) {}
+// EnterAddSub is called when production AddSub is entered.
+func (s *BaseCalcListener) EnterAddSub(ctx *AddSubContext) {}
 
-// ExitRow is called when production row is exited.
-func (s *BaseCalcListener) ExitRow(ctx *RowContext) {}
+// ExitAddSub is called when production AddSub is exited.
+func (s *BaseCalcListener) ExitAddSub(ctx *AddSubContext) {}
 
-// EnterLast is called when production last is entered.
-func (s *BaseCalcListener) EnterLast(ctx *LastContext) {}
+// EnterCHENGCHU is called when production CHENGCHU is entered.
+func (s *BaseCalcListener) EnterCHENGCHU(ctx *CHENGCHUContext) {}
 
-// ExitLast is called when production last is exited.
-func (s *BaseCalcListener) ExitLast(ctx *LastContext) {}
+// ExitCHENGCHU is called when production CHENGCHU is exited.
+func (s *BaseCalcListener) ExitCHENGCHU(ctx *CHENGCHUContext) {}
 
-// EnterFile is called when production file is entered.
-func (s *BaseCalcListener) EnterFile(ctx *FileContext) {}
+// EnterStart is called when production start is entered.
+func (s *BaseCalcListener) EnterStart(ctx *StartContext) {}
 
-// ExitFile is called when production file is exited.
-func (s *BaseCalcListener) ExitFile(ctx *FileContext) {}
+// ExitStart is called when production start is exited.
+func (s *BaseCalcListener) ExitStart(ctx *StartContext) {}

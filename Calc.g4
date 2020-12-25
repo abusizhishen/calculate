@@ -1,27 +1,18 @@
 grammar Calc;
 
-Id: [a-zA-Z_][A-Za-z0-9_]*;
-Int:[0-9]'.'?[0-9]+ |[0-9];
+NUMBER:[0-9]'.'?[0-9]+ |[0-9];
 
-AddSub:'+'|'-';
-EQ: '=';
-CHENGCHU:'*'|'/';
+Add:'+';
+Sub:'-';
+CHENG:'*';
+CHU:'/';
 
-WS: ' '+ ->skip;
-NL: '\n';
+WS: [ \t\n\r]+ ->skip;
 
 expr
-    :expr CHENGCHU expr
-    |expr AddSub expr
-    |'(' expr ')'
-    |Id
-    |Int
-    |Id EQ expr
+    :expr op = (CHENG|CHU) expr #CHENGCHU
+    |expr op = (Add|Sub) expr #AddSub
+    |NUMBER #NUMBER
     ;
 
-row
-    : expr NL;
-last
-    : expr EOF;
-file
-    : row* last;
+start: expr EOF;
