@@ -24,10 +24,10 @@ singleValue
 //    ;
 
 setVal
-    :id=Id EQ value=NUMBER;
+    :Id EQ NUMBER
+    ;
 
 jia: (Id|NUMBER) Add (Id|NUMBER);
 
 row:(setVal|singleValue|jia) ('\r'?'\n'|EOF);
-
-start: row*;
+rows: row*;

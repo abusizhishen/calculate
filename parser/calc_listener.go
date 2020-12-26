@@ -23,8 +23,8 @@ type CalcListener interface {
 	// EnterRow is called when entering the row production.
 	EnterRow(c *RowContext)
 
-	// EnterStart is called when entering the start production.
-	EnterStart(c *StartContext)
+	// EnterRows is called when entering the rows production.
+	EnterRows(c *RowsContext)
 
 	// ExitID is called when exiting the ID production.
 	ExitID(c *IDContext)
@@ -41,6 +41,6 @@ type CalcListener interface {
 	// ExitRow is called when exiting the row production.
 	ExitRow(c *RowContext)
 
-	// ExitStart is called when exiting the start production.
-	ExitStart(c *StartContext)
+	// ExitRows is called when exiting the rows production.
+	ExitRows(c *RowsContext)
 }

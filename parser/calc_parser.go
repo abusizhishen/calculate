@@ -46,7 +46,7 @@ var symbolicNames = []string{
 }
 
 var ruleNames = []string{
-	"singleValue", "setVal", "jia", "row", "start",
+	"singleValue", "setVal", "jia", "row", "rows",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -95,7 +95,7 @@ const (
 	CalcParserRULE_setVal      = 1
 	CalcParserRULE_jia         = 2
 	CalcParserRULE_row         = 3
-	CalcParserRULE_start       = 4
+	CalcParserRULE_rows        = 4
 )
 
 // ISingleValueContext is an interface to support dynamic dispatch.
@@ -270,18 +270,6 @@ type ISetValContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// GetId returns the id token.
-	GetId() antlr.Token
-
-	// GetValue returns the value token.
-	GetValue() antlr.Token
-
-	// SetId sets the id token.
-	SetId(antlr.Token)
-
-	// SetValue sets the value token.
-	SetValue(antlr.Token)
-
 	// IsSetValContext differentiates from other interfaces.
 	IsSetValContext()
 }
@@ -289,8 +277,6 @@ type ISetValContext interface {
 type SetValContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
-	id     antlr.Token
-	value  antlr.Token
 }
 
 func NewEmptySetValContext() *SetValContext {
@@ -315,20 +301,12 @@ func NewSetValContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 
 func (s *SetValContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *SetValContext) GetId() antlr.Token { return s.id }
-
-func (s *SetValContext) GetValue() antlr.Token { return s.value }
-
-func (s *SetValContext) SetId(v antlr.Token) { s.id = v }
-
-func (s *SetValContext) SetValue(v antlr.Token) { s.value = v }
+func (s *SetValContext) Id() antlr.TerminalNode {
+	return s.GetToken(CalcParserId, 0)
+}
 
 func (s *SetValContext) EQ() antlr.TerminalNode {
 	return s.GetToken(CalcParserEQ, 0)
-}
-
-func (s *SetValContext) Id() antlr.TerminalNode {
-	return s.GetToken(CalcParserId, 0)
 }
 
 func (s *SetValContext) NUMBER() antlr.TerminalNode {
@@ -378,10 +356,7 @@ func (p *CalcParser) SetVal() (localctx ISetValContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(14)
-
-		var _m = p.Match(CalcParserId)
-
-		localctx.(*SetValContext).id = _m
+		p.Match(CalcParserId)
 	}
 	{
 		p.SetState(15)
@@ -389,10 +364,7 @@ func (p *CalcParser) SetVal() (localctx ISetValContext) {
 	}
 	{
 		p.SetState(16)
-
-		var _m = p.Match(CalcParserNUMBER)
-
-		localctx.(*SetValContext).value = _m
+		p.Match(CalcParserNUMBER)
 	}
 
 	return localctx
@@ -698,45 +670,45 @@ func (p *CalcParser) Row() (localctx IRowContext) {
 	return localctx
 }
 
-// IStartContext is an interface to support dynamic dispatch.
-type IStartContext interface {
+// IRowsContext is an interface to support dynamic dispatch.
+type IRowsContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsStartContext differentiates from other interfaces.
-	IsStartContext()
+	// IsRowsContext differentiates from other interfaces.
+	IsRowsContext()
 }
 
-type StartContext struct {
+type RowsContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyStartContext() *StartContext {
-	var p = new(StartContext)
+func NewEmptyRowsContext() *RowsContext {
+	var p = new(RowsContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = CalcParserRULE_start
+	p.RuleIndex = CalcParserRULE_rows
 	return p
 }
 
-func (*StartContext) IsStartContext() {}
+func (*RowsContext) IsRowsContext() {}
 
-func NewStartContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StartContext {
-	var p = new(StartContext)
+func NewRowsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RowsContext {
+	var p = new(RowsContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = CalcParserRULE_start
+	p.RuleIndex = CalcParserRULE_rows
 
 	return p
 }
 
-func (s *StartContext) GetParser() antlr.Parser { return s.parser }
+func (s *RowsContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StartContext) AllRow() []IRowContext {
+func (s *RowsContext) AllRow() []IRowContext {
 	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IRowContext)(nil)).Elem())
 	var tst = make([]IRowContext, len(ts))
 
@@ -749,7 +721,7 @@ func (s *StartContext) AllRow() []IRowContext {
 	return tst
 }
 
-func (s *StartContext) Row(i int) IRowContext {
+func (s *RowsContext) Row(i int) IRowContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IRowContext)(nil)).Elem(), i)
 
 	if t == nil {
@@ -759,29 +731,29 @@ func (s *StartContext) Row(i int) IRowContext {
 	return t.(IRowContext)
 }
 
-func (s *StartContext) GetRuleContext() antlr.RuleContext {
+func (s *RowsContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *StartContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *RowsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *StartContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *RowsContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.EnterStart(s)
+		listenerT.EnterRows(s)
 	}
 }
 
-func (s *StartContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *RowsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.ExitStart(s)
+		listenerT.ExitRows(s)
 	}
 }
 
-func (p *CalcParser) Start() (localctx IStartContext) {
-	localctx = NewStartContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, CalcParserRULE_start)
+func (p *CalcParser) Rows() (localctx IRowsContext) {
+	localctx = NewRowsContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, CalcParserRULE_rows)
 	var _la int
 
 	defer func() {

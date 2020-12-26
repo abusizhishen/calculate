@@ -51,8 +51,8 @@ func (s *BaseCalcListener) EnterRow(ctx *RowContext) {}
 // ExitRow is called when production row is exited.
 func (s *BaseCalcListener) ExitRow(ctx *RowContext) {}
 
-// EnterStart is called when production start is entered.
-func (s *BaseCalcListener) EnterStart(ctx *StartContext) {}
+// EnterRows is called when production rows is entered.
+func (s *BaseCalcListener) EnterRows(ctx *RowsContext) {}
 
-// ExitStart is called when production start is exited.
-func (s *BaseCalcListener) ExitStart(ctx *StartContext) {}
+// ExitRows is called when production rows is exited.
+func (s *BaseCalcListener) ExitRows(ctx *RowsContext) {}
