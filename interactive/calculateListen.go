@@ -39,40 +39,24 @@ func newCalculateListen() *CalculateListen {
 
 func (c *CalculateListen)ExitSetVal(ctx  *parser.SetValContext)  {
 	id := ctx.Id().GetText()
-	val := strToInt(ctx.NUMBER().GetText())
-	m[id] = val
-	println(val)
+	m[id] = c.pop()
+	println(m[id])
 }
 
 func (c *CalculateListen)ExitID(ctx  *parser.IDContext)  {
-	c.push(m[ctx.Id().GetText()])
+	var id = ctx.Id().GetText()
+	if v,ok := m[id];!ok{
+		fmt.Println("undefined variable: ", id)
+		c.push(0)
+	}else {
+		c.push(v)
+	}
+
+
 }
 
-func (c *CalculateListen)ExitPow(ctx  *parser.PowContext)  {
-	var nu,fang int
-
-	switch ctx.GetNu().GetTokenType() {
-	case parser.CalcLexerNUMBER:
-		nu = strToInt(ctx.GetNu().GetText())
-	case parser.CalcLexerId:
-		if val,ok := m[ctx.GetNu().GetText()];ok{
-			nu = val
-		}
-	default:
-		panic(fmt.Sprintf("unknown variable type of :%s", ctx.GetNu().GetText()))
-	}
-
-	switch ctx.GetFang().GetTokenType() {
-	case parser.CalcLexerNUMBER:
-		fang = strToInt(ctx.GetFang().GetText())
-	case parser.CalcLexerId:
-		if val,ok := m[ctx.GetFang().GetText()];ok{
-			fang = val
-		}
-	default:
-		panic(fmt.Sprintf("unknown variable type of :%s", ctx.GetFang().GetText()))
-	}
-
+func (c *CalculateListen)ExitPOW(ctx  *parser.POWContext)  {
+	var fang,nu = c.pop(),c.pop()
 	c.push(int(math.Pow(float64(nu), float64(fang))))
 }
 
@@ -135,9 +119,7 @@ func strToInt(s string) int {
 }
 
 func completer(d prompt.Document) []prompt.Suggest {
-	s := []prompt.Suggest{
-		{Text: "e", Description: "exit"},
-	}
+	var s  []prompt.Suggest
 	return prompt.FilterHasPrefix(s, d.GetWordBeforeCursor(), true)
 }
 

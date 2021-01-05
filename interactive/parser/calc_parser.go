@@ -16,30 +16,29 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 56, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 3, 2, 3, 2, 3,
-	2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 25, 10,
-	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 3, 33, 10, 3, 12, 3, 14, 3, 36,
-	11, 3, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 5, 4, 44, 10, 4, 3, 5, 3, 5,
-	5, 5, 48, 10, 5, 3, 6, 7, 6, 51, 10, 6, 12, 6, 14, 6, 54, 11, 6, 3, 6,
-	2, 3, 4, 7, 2, 4, 6, 8, 10, 2, 5, 3, 2, 5, 6, 3, 2, 9, 10, 3, 2, 7, 8,
-	2, 60, 2, 12, 3, 2, 2, 2, 4, 24, 3, 2, 2, 2, 6, 43, 3, 2, 2, 2, 8, 45,
-	3, 2, 2, 2, 10, 52, 3, 2, 2, 2, 12, 13, 9, 2, 2, 2, 13, 14, 7, 12, 2, 2,
-	14, 15, 9, 2, 2, 2, 15, 3, 3, 2, 2, 2, 16, 17, 8, 3, 1, 2, 17, 25, 7, 6,
-	2, 2, 18, 25, 7, 5, 2, 2, 19, 20, 7, 3, 2, 2, 20, 21, 5, 4, 3, 2, 21, 22,
-	7, 4, 2, 2, 22, 25, 3, 2, 2, 2, 23, 25, 5, 2, 2, 2, 24, 16, 3, 2, 2, 2,
-	24, 18, 3, 2, 2, 2, 24, 19, 3, 2, 2, 2, 24, 23, 3, 2, 2, 2, 25, 34, 3,
-	2, 2, 2, 26, 27, 12, 8, 2, 2, 27, 28, 9, 3, 2, 2, 28, 33, 5, 4, 3, 9, 29,
-	30, 12, 7, 2, 2, 30, 31, 9, 4, 2, 2, 31, 33, 5, 4, 3, 8, 32, 26, 3, 2,
-	2, 2, 32, 29, 3, 2, 2, 2, 33, 36, 3, 2, 2, 2, 34, 32, 3, 2, 2, 2, 34, 35,
-	3, 2, 2, 2, 35, 5, 3, 2, 2, 2, 36, 34, 3, 2, 2, 2, 37, 38, 7, 5, 2, 2,
-	38, 39, 7, 11, 2, 2, 39, 44, 7, 6, 2, 2, 40, 44, 7, 5, 2, 2, 41, 44, 7,
-	6, 2, 2, 42, 44, 5, 4, 3, 2, 43, 37, 3, 2, 2, 2, 43, 40, 3, 2, 2, 2, 43,
-	41, 3, 2, 2, 2, 43, 42, 3, 2, 2, 2, 44, 7, 3, 2, 2, 2, 45, 47, 5, 6, 4,
-	2, 46, 48, 7, 14, 2, 2, 47, 46, 3, 2, 2, 2, 47, 48, 3, 2, 2, 2, 48, 9,
-	3, 2, 2, 2, 49, 51, 5, 8, 5, 2, 50, 49, 3, 2, 2, 2, 51, 54, 3, 2, 2, 2,
-	52, 50, 3, 2, 2, 2, 52, 53, 3, 2, 2, 2, 53, 11, 3, 2, 2, 2, 54, 52, 3,
-	2, 2, 2, 8, 24, 32, 34, 43, 47, 52,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 14, 52, 4,
+	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 3, 2, 3, 2, 3, 2, 3, 2, 3,
+	2, 3, 2, 3, 2, 5, 2, 18, 10, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3,
+	2, 3, 2, 3, 2, 7, 2, 29, 10, 2, 12, 2, 14, 2, 32, 11, 2, 3, 3, 3, 3, 3,
+	3, 3, 3, 3, 3, 3, 3, 5, 3, 40, 10, 3, 3, 4, 3, 4, 5, 4, 44, 10, 4, 3, 5,
+	7, 5, 47, 10, 5, 12, 5, 14, 5, 50, 11, 5, 3, 5, 2, 3, 2, 6, 2, 4, 6, 8,
+	2, 4, 3, 2, 9, 10, 3, 2, 7, 8, 2, 57, 2, 17, 3, 2, 2, 2, 4, 39, 3, 2, 2,
+	2, 6, 41, 3, 2, 2, 2, 8, 48, 3, 2, 2, 2, 10, 11, 8, 2, 1, 2, 11, 18, 7,
+	6, 2, 2, 12, 18, 7, 5, 2, 2, 13, 14, 7, 3, 2, 2, 14, 15, 5, 2, 2, 2, 15,
+	16, 7, 4, 2, 2, 16, 18, 3, 2, 2, 2, 17, 10, 3, 2, 2, 2, 17, 12, 3, 2, 2,
+	2, 17, 13, 3, 2, 2, 2, 18, 30, 3, 2, 2, 2, 19, 20, 12, 8, 2, 2, 20, 21,
+	9, 2, 2, 2, 21, 29, 5, 2, 2, 9, 22, 23, 12, 7, 2, 2, 23, 24, 9, 3, 2, 2,
+	24, 29, 5, 2, 2, 8, 25, 26, 12, 3, 2, 2, 26, 27, 7, 12, 2, 2, 27, 29, 5,
+	2, 2, 4, 28, 19, 3, 2, 2, 2, 28, 22, 3, 2, 2, 2, 28, 25, 3, 2, 2, 2, 29,
+	32, 3, 2, 2, 2, 30, 28, 3, 2, 2, 2, 30, 31, 3, 2, 2, 2, 31, 3, 3, 2, 2,
+	2, 32, 30, 3, 2, 2, 2, 33, 34, 7, 5, 2, 2, 34, 35, 7, 11, 2, 2, 35, 40,
+	5, 2, 2, 2, 36, 40, 7, 5, 2, 2, 37, 40, 7, 6, 2, 2, 38, 40, 5, 2, 2, 2,
+	39, 33, 3, 2, 2, 2, 39, 36, 3, 2, 2, 2, 39, 37, 3, 2, 2, 2, 39, 38, 3,
+	2, 2, 2, 40, 5, 3, 2, 2, 2, 41, 43, 5, 4, 3, 2, 42, 44, 7, 14, 2, 2, 43,
+	42, 3, 2, 2, 2, 43, 44, 3, 2, 2, 2, 44, 7, 3, 2, 2, 2, 45, 47, 5, 6, 4,
+	2, 46, 45, 3, 2, 2, 2, 47, 50, 3, 2, 2, 2, 48, 46, 3, 2, 2, 2, 48, 49,
+	3, 2, 2, 2, 49, 9, 3, 2, 2, 2, 50, 48, 3, 2, 2, 2, 8, 17, 28, 30, 39, 43,
+	48,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -53,7 +52,7 @@ var symbolicNames = []string{
 }
 
 var ruleNames = []string{
-	"pow", "expr", "expression", "row", "rows",
+	"expr", "expression", "row", "rows",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -100,178 +99,11 @@ const (
 
 // CalcParser rules.
 const (
-	CalcParserRULE_pow        = 0
-	CalcParserRULE_expr       = 1
-	CalcParserRULE_expression = 2
-	CalcParserRULE_row        = 3
-	CalcParserRULE_rows       = 4
+	CalcParserRULE_expr       = 0
+	CalcParserRULE_expression = 1
+	CalcParserRULE_row        = 2
+	CalcParserRULE_rows       = 3
 )
-
-// IPowContext is an interface to support dynamic dispatch.
-type IPowContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// GetNu returns the nu token.
-	GetNu() antlr.Token
-
-	// GetFang returns the fang token.
-	GetFang() antlr.Token
-
-	// SetNu sets the nu token.
-	SetNu(antlr.Token)
-
-	// SetFang sets the fang token.
-	SetFang(antlr.Token)
-
-	// IsPowContext differentiates from other interfaces.
-	IsPowContext()
-}
-
-type PowContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-	nu     antlr.Token
-	fang   antlr.Token
-}
-
-func NewEmptyPowContext() *PowContext {
-	var p = new(PowContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = CalcParserRULE_pow
-	return p
-}
-
-func (*PowContext) IsPowContext() {}
-
-func NewPowContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PowContext {
-	var p = new(PowContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = CalcParserRULE_pow
-
-	return p
-}
-
-func (s *PowContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *PowContext) GetNu() antlr.Token { return s.nu }
-
-func (s *PowContext) GetFang() antlr.Token { return s.fang }
-
-func (s *PowContext) SetNu(v antlr.Token) { s.nu = v }
-
-func (s *PowContext) SetFang(v antlr.Token) { s.fang = v }
-
-func (s *PowContext) POW() antlr.TerminalNode {
-	return s.GetToken(CalcParserPOW, 0)
-}
-
-func (s *PowContext) AllId() []antlr.TerminalNode {
-	return s.GetTokens(CalcParserId)
-}
-
-func (s *PowContext) Id(i int) antlr.TerminalNode {
-	return s.GetToken(CalcParserId, i)
-}
-
-func (s *PowContext) AllNUMBER() []antlr.TerminalNode {
-	return s.GetTokens(CalcParserNUMBER)
-}
-
-func (s *PowContext) NUMBER(i int) antlr.TerminalNode {
-	return s.GetToken(CalcParserNUMBER, i)
-}
-
-func (s *PowContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *PowContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *PowContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.EnterPow(s)
-	}
-}
-
-func (s *PowContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.ExitPow(s)
-	}
-}
-
-func (p *CalcParser) Pow() (localctx IPowContext) {
-	localctx = NewPowContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 0, CalcParserRULE_pow)
-	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(10)
-
-		var _lt = p.GetTokenStream().LT(1)
-
-		localctx.(*PowContext).nu = _lt
-
-		_la = p.GetTokenStream().LA(1)
-
-		if !(_la == CalcParserId || _la == CalcParserNUMBER) {
-			var _ri = p.GetErrorHandler().RecoverInline(p)
-
-			localctx.(*PowContext).nu = _ri
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
-		}
-	}
-	{
-		p.SetState(11)
-		p.Match(CalcParserPOW)
-	}
-	{
-		p.SetState(12)
-
-		var _lt = p.GetTokenStream().LT(1)
-
-		localctx.(*PowContext).fang = _lt
-
-		_la = p.GetTokenStream().LA(1)
-
-		if !(_la == CalcParserId || _la == CalcParserNUMBER) {
-			var _ri = p.GetErrorHandler().RecoverInline(p)
-
-			localctx.(*PowContext).fang = _ri
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
-		}
-	}
-
-	return localctx
-}
 
 // IExprContext is an interface to support dynamic dispatch.
 type IExprContext interface {
@@ -463,6 +295,63 @@ func (s *ADDSUBContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+type POWContext struct {
+	*ExprContext
+}
+
+func NewPOWContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *POWContext {
+	var p = new(POWContext)
+
+	p.ExprContext = NewEmptyExprContext()
+	p.parser = parser
+	p.CopyFrom(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *POWContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *POWContext) AllExpr() []IExprContext {
+	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IExprContext)(nil)).Elem())
+	var tst = make([]IExprContext, len(ts))
+
+	for i, t := range ts {
+		if t != nil {
+			tst[i] = t.(IExprContext)
+		}
+	}
+
+	return tst
+}
+
+func (s *POWContext) Expr(i int) IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), i)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *POWContext) POW() antlr.TerminalNode {
+	return s.GetToken(CalcParserPOW, 0)
+}
+
+func (s *POWContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(CalcListener); ok {
+		listenerT.EnterPOW(s)
+	}
+}
+
+func (s *POWContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(CalcListener); ok {
+		listenerT.ExitPOW(s)
+	}
+}
+
 type IDContext struct {
 	*ExprContext
 }
@@ -494,46 +383,6 @@ func (s *IDContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *IDContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CalcListener); ok {
 		listenerT.ExitID(s)
-	}
-}
-
-type PPOWContext struct {
-	*ExprContext
-}
-
-func NewPPOWContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PPOWContext {
-	var p = new(PPOWContext)
-
-	p.ExprContext = NewEmptyExprContext()
-	p.parser = parser
-	p.CopyFrom(ctx.(*ExprContext))
-
-	return p
-}
-
-func (s *PPOWContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *PPOWContext) Pow() IPowContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IPowContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IPowContext)
-}
-
-func (s *PPOWContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.EnterPPOW(s)
-	}
-}
-
-func (s *PPOWContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(CalcListener); ok {
-		listenerT.ExitPPOW(s)
 	}
 }
 
@@ -613,8 +462,8 @@ func (p *CalcParser) expr(_p int) (localctx IExprContext) {
 	localctx = NewExprContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 2
-	p.EnterRecursionRule(localctx, 2, CalcParserRULE_expr, _p)
+	_startState := 0
+	p.EnterRecursionRule(localctx, 0, CalcParserRULE_expr, _p)
 	var _la int
 
 	defer func() {
@@ -636,57 +485,51 @@ func (p *CalcParser) expr(_p int) (localctx IExprContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(22)
+	p.SetState(15)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 0, p.GetParserRuleContext()) {
-	case 1:
+
+	switch p.GetTokenStream().LA(1) {
+	case CalcParserNUMBER:
 		localctx = NewNUMBERContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 
 		{
-			p.SetState(15)
+			p.SetState(9)
 			p.Match(CalcParserNUMBER)
 		}
 
-	case 2:
+	case CalcParserId:
 		localctx = NewIDContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(16)
+			p.SetState(10)
 			p.Match(CalcParserId)
 		}
 
-	case 3:
+	case CalcParserT__0:
 		localctx = NewPARENTHESContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
-			p.SetState(17)
+			p.SetState(11)
 			p.Match(CalcParserT__0)
 		}
 		{
-			p.SetState(18)
+			p.SetState(12)
 			p.expr(0)
 		}
 		{
-			p.SetState(19)
+			p.SetState(13)
 			p.Match(CalcParserT__1)
 		}
 
-	case 4:
-		localctx = NewPPOWContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
-			p.SetState(21)
-			p.Pow()
-		}
-
+	default:
+		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(32)
+	p.SetState(28)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
 
@@ -696,19 +539,19 @@ func (p *CalcParser) expr(_p int) (localctx IExprContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(30)
+			p.SetState(26)
 			p.GetErrorHandler().Sync(p)
 			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewCHENGCHUContext(p, NewExprContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, CalcParserRULE_expr)
-				p.SetState(24)
+				p.SetState(17)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 6)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
 				}
 				{
-					p.SetState(25)
+					p.SetState(18)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -726,20 +569,20 @@ func (p *CalcParser) expr(_p int) (localctx IExprContext) {
 					}
 				}
 				{
-					p.SetState(26)
+					p.SetState(19)
 					p.expr(7)
 				}
 
 			case 2:
 				localctx = NewADDSUBContext(p, NewExprContext(p, _parentctx, _parentState))
 				p.PushNewRecursionContext(localctx, _startState, CalcParserRULE_expr)
-				p.SetState(27)
+				p.SetState(20)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
 				}
 				{
-					p.SetState(28)
+					p.SetState(21)
 
 					var _lt = p.GetTokenStream().LT(1)
 
@@ -757,14 +600,31 @@ func (p *CalcParser) expr(_p int) (localctx IExprContext) {
 					}
 				}
 				{
-					p.SetState(29)
+					p.SetState(22)
 					p.expr(6)
+				}
+
+			case 3:
+				localctx = NewPOWContext(p, NewExprContext(p, _parentctx, _parentState))
+				p.PushNewRecursionContext(localctx, _startState, CalcParserRULE_expr)
+				p.SetState(23)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 1)) {
+					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
+				}
+				{
+					p.SetState(24)
+					p.Match(CalcParserPOW)
+				}
+				{
+					p.SetState(25)
+					p.expr(2)
 				}
 
 			}
 
 		}
-		p.SetState(34)
+		p.SetState(30)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext())
 	}
@@ -888,8 +748,14 @@ func (s *SetValContext) EQ() antlr.TerminalNode {
 	return s.GetToken(CalcParserEQ, 0)
 }
 
-func (s *SetValContext) NUMBER() antlr.TerminalNode {
-	return s.GetToken(CalcParserNUMBER, 0)
+func (s *SetValContext) Expr() IExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
 }
 
 func (s *SetValContext) EnterRule(listener antlr.ParseTreeListener) {
@@ -974,7 +840,7 @@ func (s *OUTNUMBERContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *CalcParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, CalcParserRULE_expression)
+	p.EnterRule(localctx, 2, CalcParserRULE_expression)
 
 	defer func() {
 		p.ExitRule()
@@ -992,30 +858,30 @@ func (p *CalcParser) Expression() (localctx IExpressionContext) {
 		}
 	}()
 
-	p.SetState(41)
+	p.SetState(37)
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewSetValContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(35)
+			p.SetState(31)
 			p.Match(CalcParserId)
 		}
 		{
-			p.SetState(36)
+			p.SetState(32)
 			p.Match(CalcParserEQ)
 		}
 		{
-			p.SetState(37)
-			p.Match(CalcParserNUMBER)
+			p.SetState(33)
+			p.expr(0)
 		}
 
 	case 2:
 		localctx = NewOUTIDContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(38)
+			p.SetState(34)
 			p.Match(CalcParserId)
 		}
 
@@ -1023,7 +889,7 @@ func (p *CalcParser) Expression() (localctx IExpressionContext) {
 		localctx = NewOUTNUMBERContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(39)
+			p.SetState(35)
 			p.Match(CalcParserNUMBER)
 		}
 
@@ -1031,7 +897,7 @@ func (p *CalcParser) Expression() (localctx IExpressionContext) {
 		localctx = NewEXPRContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(40)
+			p.SetState(36)
 			p.expr(0)
 		}
 
@@ -1114,7 +980,7 @@ func (s *RowContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *CalcParser) Row() (localctx IRowContext) {
 	localctx = NewRowContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, CalcParserRULE_row)
+	p.EnterRule(localctx, 4, CalcParserRULE_row)
 	var _la int
 
 	defer func() {
@@ -1135,16 +1001,16 @@ func (p *CalcParser) Row() (localctx IRowContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(43)
+		p.SetState(39)
 		p.Expression()
 	}
-	p.SetState(45)
+	p.SetState(41)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == CalcParserNL {
 		{
-			p.SetState(44)
+			p.SetState(40)
 			p.Match(CalcParserNL)
 		}
 
@@ -1236,7 +1102,7 @@ func (s *RowsContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *CalcParser) Rows() (localctx IRowsContext) {
 	localctx = NewRowsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, CalcParserRULE_rows)
+	p.EnterRule(localctx, 6, CalcParserRULE_rows)
 	var _la int
 
 	defer func() {
@@ -1256,17 +1122,17 @@ func (p *CalcParser) Rows() (localctx IRowsContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(50)
+	p.SetState(46)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<CalcParserT__0)|(1<<CalcParserId)|(1<<CalcParserNUMBER))) != 0 {
 		{
-			p.SetState(47)
+			p.SetState(43)
 			p.Row()
 		}
 
-		p.SetState(52)
+		p.SetState(48)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1276,7 +1142,7 @@ func (p *CalcParser) Rows() (localctx IRowsContext) {
 
 func (p *CalcParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
-	case 1:
+	case 0:
 		var t *ExprContext = nil
 		if localctx != nil {
 			t = localctx.(*ExprContext)
@@ -1295,6 +1161,9 @@ func (p *CalcParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) boo
 
 	case 1:
 		return p.Precpred(p.GetParserRuleContext(), 5)
+
+	case 2:
+		return p.Precpred(p.GetParserRuleContext(), 1)
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

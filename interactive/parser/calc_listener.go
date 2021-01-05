@@ -8,9 +8,6 @@ import "github.com/antlr/antlr4/runtime/Go/antlr"
 type CalcListener interface {
 	antlr.ParseTreeListener
 
-	// EnterPow is called when entering the pow production.
-	EnterPow(c *PowContext)
-
 	// EnterNUMBER is called when entering the NUMBER production.
 	EnterNUMBER(c *NUMBERContext)
 
@@ -20,11 +17,11 @@ type CalcListener interface {
 	// EnterADDSUB is called when entering the ADDSUB production.
 	EnterADDSUB(c *ADDSUBContext)
 
+	// EnterPOW is called when entering the POW production.
+	EnterPOW(c *POWContext)
+
 	// EnterID is called when entering the ID production.
 	EnterID(c *IDContext)
-
-	// EnterPPOW is called when entering the PPOW production.
-	EnterPPOW(c *PPOWContext)
 
 	// EnterCHENGCHU is called when entering the CHENGCHU production.
 	EnterCHENGCHU(c *CHENGCHUContext)
@@ -47,9 +44,6 @@ type CalcListener interface {
 	// EnterRows is called when entering the rows production.
 	EnterRows(c *RowsContext)
 
-	// ExitPow is called when exiting the pow production.
-	ExitPow(c *PowContext)
-
 	// ExitNUMBER is called when exiting the NUMBER production.
 	ExitNUMBER(c *NUMBERContext)
 
@@ -59,11 +53,11 @@ type CalcListener interface {
 	// ExitADDSUB is called when exiting the ADDSUB production.
 	ExitADDSUB(c *ADDSUBContext)
 
+	// ExitPOW is called when exiting the POW production.
+	ExitPOW(c *POWContext)
+
 	// ExitID is called when exiting the ID production.
 	ExitID(c *IDContext)
-
-	// ExitPPOW is called when exiting the PPOW production.
-	ExitPPOW(c *PPOWContext)
 
 	// ExitCHENGCHU is called when exiting the CHENGCHU production.
 	ExitCHENGCHU(c *CHENGCHUContext)

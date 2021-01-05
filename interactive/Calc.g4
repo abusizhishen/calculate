@@ -13,21 +13,17 @@ POW: '^';
 WS: [ \t]+ ->skip;
 NL:('\r'?'\n' | EOF);
 
-pow
-    : nu=(Id|NUMBER) POW <assoc=right> fang=(Id|NUMBER)
-    ;
-
 expr
     :expr op = (CHENG|CHU) expr #CHENGCHU
     |expr op = (Add|Sub) expr #ADDSUB
     |NUMBER #NUMBER
     |Id #ID
     |'(' expr ')' #PARENTHES
-    |pow #PPOW
+    |expr '^'<assoc=right> expr #POW
     ;
 
 expression
-    :Id EQ NUMBER #SetVal
+    :Id EQ expr #SetVal
     |Id     #OUTID
     |NUMBER #OUTNUMBER
     |expr #EXPR

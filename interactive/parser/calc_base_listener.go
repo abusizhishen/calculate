@@ -21,12 +21,6 @@ func (s *BaseCalcListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseCalcListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterPow is called when production pow is entered.
-func (s *BaseCalcListener) EnterPow(ctx *PowContext) {}
-
-// ExitPow is called when production pow is exited.
-func (s *BaseCalcListener) ExitPow(ctx *PowContext) {}
-
 // EnterNUMBER is called when production NUMBER is entered.
 func (s *BaseCalcListener) EnterNUMBER(ctx *NUMBERContext) {}
 
@@ -45,17 +39,17 @@ func (s *BaseCalcListener) EnterADDSUB(ctx *ADDSUBContext) {}
 // ExitADDSUB is called when production ADDSUB is exited.
 func (s *BaseCalcListener) ExitADDSUB(ctx *ADDSUBContext) {}
 
+// EnterPOW is called when production POW is entered.
+func (s *BaseCalcListener) EnterPOW(ctx *POWContext) {}
+
+// ExitPOW is called when production POW is exited.
+func (s *BaseCalcListener) ExitPOW(ctx *POWContext) {}
+
 // EnterID is called when production ID is entered.
 func (s *BaseCalcListener) EnterID(ctx *IDContext) {}
 
 // ExitID is called when production ID is exited.
 func (s *BaseCalcListener) ExitID(ctx *IDContext) {}
-
-// EnterPPOW is called when production PPOW is entered.
-func (s *BaseCalcListener) EnterPPOW(ctx *PPOWContext) {}
-
-// ExitPPOW is called when production PPOW is exited.
-func (s *BaseCalcListener) ExitPPOW(ctx *PPOWContext) {}
 
 // EnterCHENGCHU is called when production CHENGCHU is entered.
 func (s *BaseCalcListener) EnterCHENGCHU(ctx *CHENGCHUContext) {}
